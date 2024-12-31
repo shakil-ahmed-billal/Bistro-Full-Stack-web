@@ -10,10 +10,14 @@ export default {
     flowbite.content(),
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'feature': "url('./assets/home/featured.jpg')",
+      },
+    },
   },
   plugins: [
     flowbite.plugin(),
-    // require('daisyui'),
+    require('daisyui'),
   ],
 }
