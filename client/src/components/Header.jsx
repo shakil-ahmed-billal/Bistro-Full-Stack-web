@@ -12,6 +12,7 @@ import {
     NavbarLink,
     NavbarToggle,
   } from "flowbite-react";
+import { Link } from "react-router-dom";
 
   export function Header() {
     return (
@@ -42,13 +43,11 @@ import {
           <NavbarToggle />
         </div>
         <NavbarCollapse>
-          <NavbarLink href="#" active>
-            Home
-          </NavbarLink>
-          <NavbarLink href="#">About</NavbarLink>
-          <NavbarLink href="#">Services</NavbarLink>
-          <NavbarLink href="#">Pricing</NavbarLink>
-          <NavbarLink href="#">Contact</NavbarLink>
+          
+          <Link to={'/'}><NavbarLink>Home</NavbarLink></Link>
+          <Link to={'/menu'}><NavbarLink >Our Menu</NavbarLink></Link>
+          <Link to={'/order'}><NavbarLink >Food Order</NavbarLink></Link>
+    
         </NavbarCollapse>
       </Navbar>
     );
