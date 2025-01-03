@@ -40,21 +40,21 @@ const Menu = () => {
       {/* dessert menu items render section */}
       <MenuCategory
       item={dessert}
-      title={'Dessert Items'}
+      title={'dessert'}
       coverImage={dessertImage}
       description={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
       ></MenuCategory>
       {/* pizza menu items render section */}
       <MenuCategory
-      item={pizza} title={'Pizza Items'}  coverImage={pizzaImage}
+      item={pizza} title={'pizza'}  coverImage={pizzaImage}
       description={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} ></MenuCategory>
       {/* salad menu items render section */}
       <MenuCategory
-      item={salad} title={'Salad Items'}  coverImage={saladImage}
+      item={salad} title={'salad'}  coverImage={saladImage}
       description={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} ></MenuCategory>
       {/* soup menu items render section */}
       <MenuCategory
-      item={soup} title={'soup Items'}  coverImage={soupImage}
+      item={soup} title={'soup'}  coverImage={soupImage}
       description={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} ></MenuCategory>
     </div>
   )

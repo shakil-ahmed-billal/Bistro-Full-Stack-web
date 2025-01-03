@@ -6,3 +6,6 @@
 .featured-item {
     @apply bg-feature;
 }
+.btn-main {
+    @apply btn btn-outline border-0 border-yellow-400 text-yellow-400 border-b-2 hover:bg-transparent hover:text-gray-600;
+}

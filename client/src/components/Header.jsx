@@ -46,7 +46,7 @@ import { Link } from "react-router-dom";
           
           <Link to={'/'}><NavbarLink>Home</NavbarLink></Link>
           <Link to={'/menu'}><NavbarLink >Our Menu</NavbarLink></Link>
-          <Link to={'/order'}><NavbarLink >Food Order</NavbarLink></Link>
+          <Link to={`/order/salad`}><NavbarLink >Food Order</NavbarLink></Link>
     
         </NavbarCollapse>
       </Navbar>
