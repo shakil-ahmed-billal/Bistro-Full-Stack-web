@@ -13,13 +13,10 @@ const Order = () => {
     const categories =  ['salad' , 'pizza' , 'soup','dessert', 'drinks']
     const {category} = useParams()
     const initialIndex = category.indexOf(categories)
-    const [tabIndex, setTabIndex] = useState(initialIndex);
+    const [tabIndex, setTabIndex] = useState(0);
     const [menus] = useMenu()
     console.log(initialIndex , category)
 
-
-    const popular = menus.filter(item => item.category === "popular")
-    const offered = menus.filter(item => item.category === "offered")
     const soup = menus.filter(item => item.category === "soup")
     const pizza = menus.filter(item => item.category === "pizza")
     const dessert = menus.filter(item => item.category === "dessert")

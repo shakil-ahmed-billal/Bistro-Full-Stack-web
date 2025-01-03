@@ -12,12 +12,10 @@ import soupImage from '../../assets/menu/soup-bg.jpg'
 const Menu = () => {
 
   const [menus] = useMenu()
-  const popular = menus.filter(item => item.category === "popular")
   const offered = menus.filter(item => item.category === "offered")
   const soup = menus.filter(item => item.category === "soup")
   const pizza = menus.filter(item => item.category === "pizza")
   const dessert = menus.filter(item => item.category === "dessert")
-  const drinks = menus.filter(item => item.category === "drinks")
   const salad = menus.filter(item => item.category === "salad")
   return (
     <div>
