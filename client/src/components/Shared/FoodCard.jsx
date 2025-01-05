@@ -1,9 +1,15 @@
 
 
-const FoodCard = ({item}) => {
+import PropTypes from 'prop-types';
+
+const FoodCard = ({ item }) => {
 
 
     const { name , image , price , recipe} = item || {}
+
+    const handleCart = () => {
+
+    }
 
     return (
         <div>
@@ -18,13 +24,20 @@ const FoodCard = ({item}) => {
                     <h2 className="card-title">{name}</h2>
                     <p>{recipe}</p>
                     <div className="card-actions justify-center ">
-                        <button className="btn-main ">Order Now</button>
+                        <button onClick={()=>handleCart(item)} className="btn-main ">Add to Cart</button>
                     </div>
                 </div>
             </div>
         </div>
     )
-
+}
+FoodCard.propTypes = {
+    item: PropTypes.shape({
+        name: PropTypes.string,
+        image: PropTypes.string,
+        price: PropTypes.number,
+        recipe: PropTypes.string
+    }).isRequired
 };
 
 export default FoodCard;

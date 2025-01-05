@@ -1,6 +1,5 @@
 
 import {
-  Avatar,
   Button,
   DarkThemeToggle,
   Dropdown,
@@ -13,10 +12,13 @@ import {
   NavbarLink,
   NavbarToggle
 } from "flowbite-react";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import { ShoppingCart } from "lucide-react";
 
 export function Header() {
+
+  const {user , LogOutUser} = useAuth()
 
 
 
@@ -27,25 +29,25 @@ export function Header() {
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">BESTRO BOSS</span>
       </NavbarBrand>
       <div className="flex md:order-2">
-        <Link to={'/login'}><Button>Login</Button></Link>
+        
         <DarkThemeToggle />
-        <Dropdown
+        {user? <Dropdown
           arrowIcon={false}
           inline
           label={
-            <Avatar alt="User settings" img="https://flowbite.com/docs/images/people/profile-picture-5.jpg" rounded />
+            <img referrerPolicy="no-referrer" className="w-10 h-10 rounded-full" src={user?.photoURL}></img>
           }
         >
           <DropdownHeader>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm">{user?.displayName}</span>
+            <span className="block truncate text-sm font-medium">{user?.email}</span>
           </DropdownHeader>
           <DropdownItem>Dashboard</DropdownItem>
           <DropdownItem>Settings</DropdownItem>
           <DropdownItem>Earnings</DropdownItem>
           <DropdownDivider />
-          <DropdownItem>Sign out</DropdownItem>
-        </Dropdown>
+          <DropdownItem onClick={LogOutUser}>Sign out</DropdownItem>
+        </Dropdown>: <Link to={'/login'}><Button>Login</Button></Link>}
         <NavbarToggle />
       </div>
       <NavbarCollapse>
@@ -53,6 +55,9 @@ export function Header() {
         <Link to={'/'}><NavbarLink>Home</NavbarLink></Link>
         <Link to={'/menu'}><NavbarLink >Our Menu</NavbarLink></Link>
         <Link to={`/order/salad`}><NavbarLink >Food Order</NavbarLink></Link>
+        <Link to='/cart'>
+          <NavbarLink className="flex items-center gap-2 "><ShoppingCart></ShoppingCart> Cart</NavbarLink>
+        </Link>
 
       </NavbarCollapse>
     </Navbar>

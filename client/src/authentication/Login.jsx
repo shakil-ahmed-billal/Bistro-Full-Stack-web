@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom"
 import logo from '../assets/shop/banner2.jpg'
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import useAuth from "../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -45,6 +46,10 @@ const Login = () => {
     }
 
     return (
+        <>
+        <Helmet>
+            <title>Bistro || Signin</title>
+        </Helmet>
         <div className=' min-h-screen flex justify-center items-center'>
             <div className='flex w-full max-w-sm mx-auto overflow-hidden  rounded-lg shadow-lg  lg:max-w-4xl border '>
                 <div
@@ -195,7 +200,7 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div></>
     )
 }
 
