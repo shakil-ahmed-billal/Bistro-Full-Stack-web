@@ -5,9 +5,8 @@ import Menu from '../pages/Menu/Menu'
 import Order from '../pages/Order/Order'
 import Login from '../authentication/Login'
 import Register from '../pages/Regsiter/Register'
-import PrivateRoute from '../private/PrivateRoute'
-import Test from '../components/Test'
-import AuthenticationRoute from '../authentication/AuthenticationRoute'
+import Dashboard from '../layout/Dashboard'
+
 
 
 
@@ -27,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/order/:category',
-                element:<AuthenticationRoute><Order></Order></AuthenticationRoute>
+                element : <Order></Order>
             },
             {
                 path: '/login',
@@ -38,9 +37,19 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                path:'/private',
-                element:<AuthenticationRoute><Test></Test></AuthenticationRoute>
+                
             }
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: '/dashboard/cart',
+                element: <p>My cart</p>
+            }
+            
         ]
     }
 ])

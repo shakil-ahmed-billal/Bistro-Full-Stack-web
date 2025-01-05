@@ -12,14 +12,16 @@ import {
   NavbarLink,
   NavbarToggle
 } from "flowbite-react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { ShoppingCart } from "lucide-react";
+import useCart from "../hooks/useCart";
 
 export function Header() {
 
   const {user , LogOutUser} = useAuth()
-
+  const [cart] = useCart()
+  console.log(cart)
 
 
   return (
@@ -55,8 +57,8 @@ export function Header() {
         <Link to={'/'}><NavbarLink>Home</NavbarLink></Link>
         <Link to={'/menu'}><NavbarLink >Our Menu</NavbarLink></Link>
         <Link to={`/order/salad`}><NavbarLink >Food Order</NavbarLink></Link>
-        <Link to='/cart'>
-          <NavbarLink className="flex items-center gap-2 "><ShoppingCart></ShoppingCart> Cart</NavbarLink>
+        <Link to='/dashboard/cart'>
+          <NavbarLink className="flex items-center gap-2 "><ShoppingCart></ShoppingCart>{cart?.length}</NavbarLink>
         </Link>
 
       </NavbarCollapse>

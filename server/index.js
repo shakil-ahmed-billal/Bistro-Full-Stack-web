@@ -38,6 +38,10 @@ async function run() {
       const result = await reviewsCollection.find().toArray()
       res.send(result)
     })
+    app.get('/cart' , async (req , res)=>{
+      const result = await cartCollection.find().toArray()
+      res.send(result)
+    })
 
 
     // foods  cart api 
