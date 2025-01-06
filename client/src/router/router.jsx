@@ -6,6 +6,7 @@ import Order from '../pages/Order/Order'
 import Login from '../authentication/Login'
 import Register from '../pages/Regsiter/Register'
 import Dashboard from '../layout/Dashboard'
+import Cart from '../pages/Deshboard/Cart/Cart'
 
 
 
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/dashboard/cart',
-                element: <p>My cart</p>
+                element: <Cart></Cart>
             }
             
         ]

@@ -1,4 +1,4 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const express = require('express');
 require('dotenv').config()
 const app = express();
@@ -24,6 +24,7 @@ async function run() {
   try {
 
     const db = client.db('BistroDB')
+    const userCollection = db.collection('users')
     const menuCollection = db.collection('menu')
     const cartCollection = db.collection('cart')
     const reviewsCollection = db.collection('reviews')
@@ -50,7 +51,20 @@ async function run() {
       const result = await cartCollection.insertOne(cartItem)
       res.send(result)
     })
-
+    // new user add server api
+    app.post('/user' , async(req , res)=>{
+      const data = req.body;
+      const result =await userCollection.insertOne(data)
+      res.send(result)
+    })
+    // cart food items delete api 
+    app.delete('/cart/:id' , async(req , res)=>{
+      const id = req.params.id;
+      console.log(id)
+      const query = {_id: new ObjectId(id)}
+      const result = await cartCollection.deleteOne(query)
+      res.send(result)
+    })
 
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();

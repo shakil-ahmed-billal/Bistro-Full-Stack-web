@@ -8,7 +8,7 @@ import {
 import {FiBarChart, FiPieChart} from "react-icons/fi";
 import {RiAccountCircleLine} from "react-icons/ri";
 import {GoHome, GoProjectSymlink, GoSidebarCollapse} from "react-icons/go";
-import {CiCalendar, CiLogout} from "react-icons/ci";
+import { CiLogout} from "react-icons/ci";
 import {BsThreeDots} from "react-icons/bs";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
@@ -21,7 +21,7 @@ const Sidebar = () => {
     const {user } = useAuth()
 
     return (
-        <aside className={`${isCollapse? 'w-64': 'w-20'} bg-white boxShadow rounded-md transition-all duration-300 ease`}>
+        <aside className={`${isCollapse? 'w-44': 'w-20'} bg-white boxShadow rounded-md transition-all duration-300 ease`}>
             <div className={`mt-5 ${isCollapse ? "px-[20px]" : "px-[10px]"} transition-all duration-300 ease-in-out`}>
                 {
                     isCollapse ? (
@@ -226,7 +226,7 @@ const Sidebar = () => {
                     <img referrerPolicy="no-referrer"
                         src={user?.photoURL}
                         alt="avatar" className="w-[30px] h-[30px] cursor-pointer rounded-full object-cover"/>
-                    <h3 className={`${isCollapse ? "inline" : "hidden"} text-[0.9rem] text-gray-800 font-[500]`}>{user.displayName}</h3>
+                    <h3 className={`${isCollapse ? "inline" : "hidden"} text-[0.9rem] text-gray-800 font-[500]`}>{user?.displayName}</h3>
                 </div>
 
                 <div className={`${isCollapse ? "inline" : "hidden"} relative group`}>

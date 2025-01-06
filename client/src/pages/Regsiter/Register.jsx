@@ -6,14 +6,15 @@ import logo from "../../assets/shop/banner2.jpg"
 import useAuth from "../../hooks/useAuth"
 import { Helmet } from "react-helmet-async"
 import { imageUpload } from "../../API/utils"
+import useAxiosPublic from "../../hooks/useAxiosPublic"
 
 const Register = () => {
 
     const { googleLogin, createUser, userUpdate } = useAuth()
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
-
-    const { register, handleSubmit, formState: { errors }, } = useForm()
+    const { register, handleSubmit, reset , formState: { errors }, } = useForm()
 
     const onSubmit = async(data) => {
         
@@ -23,8 +24,22 @@ const Register = () => {
         // user create a firebase
         createUser(data.email , data.password)
         .then(res =>{
+            
             console.log(res.user)
             userUpdate({displayName: data.name , photoURL: photoURL})
+            .then(async() =>{
+                const userInfo = {
+                    name: data.name,
+                    email: data.email,
+                    photoURL: photoURL,
+                    createTime: new Date()
+                }
+                const {data: userData} = await axiosPublic.post('/user' , userInfo)
+                if(userData.insertedId){
+                    reset()
+                    console.log(userData)
+                }
+            })
         })
     }
 

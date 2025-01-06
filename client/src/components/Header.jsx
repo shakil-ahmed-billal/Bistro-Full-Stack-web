@@ -25,7 +25,7 @@ export function Header() {
 
 
   return (
-    <Navbar className="" fluid>
+    <Navbar className="fixed top-0 w-full z-50" fluid>
       <NavbarBrand href="">
         <img src="" className="mr-3 h-6 sm:h-9" alt="" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">BESTRO BOSS</span>
