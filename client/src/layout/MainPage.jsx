@@ -6,7 +6,7 @@ import { Header } from "../components/Header"
 const MainPage = () => {
 
   const location = useLocation()
-  const noHeader = location.pathname.includes('/register','/login') || location?.pathname.includes('/register')
+  const noHeader = location.pathname.includes('/login') || location?.pathname.includes('/register')
 
 
   return (

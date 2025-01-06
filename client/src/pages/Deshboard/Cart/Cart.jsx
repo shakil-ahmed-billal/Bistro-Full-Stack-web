@@ -61,8 +61,8 @@ const Cart = () => {
                 <div className="flex-1">
                   <h3 className="font-medium">{item.name}</h3>
                   <div className="flex items-center gap-[30px] mt-2">
-                    <p className="text-sm text-gray-500">Size: <b className="text-gray-800">XL</b></p>
-                    <p className="text-sm text-gray-500">Color: <b className="text-gray-800">Blue</b>
+                    <p className="text-sm text-gray-500">Rating: <b className="text-gray-800">{item?.rating}</b></p>
+                    <p className="text-sm text-gray-500">ID: <b className="text-gray-800">{item?._id.slice(0,4)}</b>
                     </p>
                   </div>
                 </div>
