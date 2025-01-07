@@ -9,14 +9,23 @@ import { IoIosSearch } from "react-icons/io";
 import { RiAccountCircleLine, RiSecurePaymentFill } from "react-icons/ri";
 import { NavLink } from 'react-router-dom';
 import useAuth from "../hooks/useAuth";
+import useAdmin from "../hooks/useAdmin";
 const Sidebar = () => {
 
     const [isCollapse, setIsCollapse] = useState(true)
-    const [isDropdownOpen, setIsDropdownOpen] = useState(true)
+    // const [isDropdownOpen, setIsDropdownOpen] = useState(true)
     const { user } = useAuth()
 
     // TODO : get Admin value form the database
-    const isAdmin = true;
+    const [isAdmin , isPending] = useAdmin()
+    // console.log(isAdmin)
+    const Admin = true
+
+    console.log(isAdmin)
+
+    if(isPending){
+        return <p>Loading .....</p>
+    }
 
 
     return (
@@ -79,7 +88,7 @@ const Sidebar = () => {
 
                 {/* Admin or user navLink section */}
                 <div className="mt-3 flex flex-col gap-[5px]">
-                    {isAdmin ? <>
+                    {Admin ? <>
                         <NavLink to={'/dashboard/adminHome'}
                             className={`${isCollapse ? "justify-between" : "justify-center"} flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}>
                             <div className="flex items-center gap-[8px]">

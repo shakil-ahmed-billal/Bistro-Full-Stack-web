@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react";
 import { Delete, Edit, User } from "lucide-react";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 
 const AddUser = () => {
