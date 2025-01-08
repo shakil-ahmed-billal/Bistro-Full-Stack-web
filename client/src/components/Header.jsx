@@ -21,7 +21,6 @@ export function Header() {
 
   const {user , LogOutUser} = useAuth()
   const [cart] = useCart()
-  console.log(cart)
 
 
   return (

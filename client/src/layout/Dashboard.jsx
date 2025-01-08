@@ -4,7 +4,7 @@ import { Header } from '../components/Header'
 
 const Dashboard = () => {
   return (
-    <div className="">
+    <div className="dark:bg-[#1F2937] dark:text-white min-h-screen">
       <Header></Header>
       <div className="flex">
       <div className="w-44 fixed z-10 min-h-[calc(100vh-60px)] content-center">

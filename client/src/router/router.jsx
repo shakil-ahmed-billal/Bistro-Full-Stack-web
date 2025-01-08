@@ -1,16 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom'
+import Login from '../authentication/Login'
+import Dashboard from '../layout/Dashboard'
 import MainPage from '../layout/MainPage'
+import AddItem from '../pages/Deshboard/AddItem'
+import AddUser from '../pages/Deshboard/AddUser'
+import Cart from '../pages/Deshboard/Cart/Cart'
 import Home from '../pages/Home/Home'
 import Menu from '../pages/Menu/Menu'
 import Order from '../pages/Order/Order'
-import Login from '../authentication/Login'
 import Register from '../pages/Regsiter/Register'
-import Dashboard from '../layout/Dashboard'
 import PrivateRoute from '../private/PrivateRoute'
-import AdminRoute from '../private/AdminRoute'
-import Cart from '../pages/Deshboard/Cart/Cart'
-import AddUser from '../pages/Deshboard/AddUser'
-import AddItem from '../pages/Deshboard/AddItem'
+import ManageItem from '../pages/Deshboard/ManageItem'
 
 
 
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/order/:category',
-                element : <Order></Order>
+                element: <Order></Order>
             },
             {
                 path: '/login',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
                 element: <Register></Register>
             },
             {
-                
+
             }
         ]
     },
@@ -63,8 +63,12 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addItem',
                 element: <AddItem></AddItem>
+            }, 
+            {
+                path: '/dashboard/manageItem',
+                element: <ManageItem></ManageItem>
             }
-            
+
         ]
     }
 ])

@@ -88,8 +88,6 @@ async function run() {
       res.send(result);
     });
 
-
-
     // admin route api
     app.get("/user/admin/:email", verifyToken, async (req, res) => {
       const email = req.params?.email;
@@ -103,11 +101,9 @@ async function run() {
       if (user) {
         admin = user?.role === "admin";
       }
-      res.send({admin});
+      res.send({ admin });
     });
 
-
-    
     // foods  cart api
     app.post("/cart", async (req, res) => {
       const cartItem = req.body;
@@ -132,6 +128,13 @@ async function run() {
       const result = await cartCollection.deleteOne(query);
       res.send(result);
     });
+    // admin menu  items add api
+    app.post("/addItem", verifyToken, async (req, res) => {
+      const item = req.body;
+      const result = await menuCollection.insertOne(item);
+      res.send(result);
+    });
+
     // user delete api
     app.delete("/user/:id", async (req, res) => {
       const id = req.params.id;
