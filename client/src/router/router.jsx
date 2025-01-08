@@ -10,6 +10,7 @@ import PrivateRoute from '../private/PrivateRoute'
 import AdminRoute from '../private/AdminRoute'
 import Cart from '../pages/Deshboard/Cart/Cart'
 import AddUser from '../pages/Deshboard/AddUser'
+import AddItem from '../pages/Deshboard/AddItem'
 
 
 
@@ -60,7 +61,8 @@ const router = createBrowserRouter([
                 element: <AddUser></AddUser>
             },
             {
-                path: '/dashboard/addItem'
+                path: '/dashboard/addItem',
+                element: <AddItem></AddItem>
             }
             
         ]
