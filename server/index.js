@@ -1,9 +1,10 @@
-const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
-const express = require("express");
-require("dotenv").config();
-const jwt = require("jsonwebtoken");
+import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb'
+import express from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
+import jwt from 'jsonwebtoken'
 const app = express();
-const cors = require("cors");
+import cors from 'cors'
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -73,6 +74,13 @@ async function run() {
       const result = await menuCollection.find().toArray();
       res.send(result);
     });
+    // only 1 menu data load api
+    app.get('/menu/:id' , async(req , res)=>{
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+      const result = await menuCollection.findOne(query)
+      res.send(result)
+    })
     // all review api
     app.get("/review", async (req, res) => {
       const result = await reviewsCollection.find().toArray();
@@ -156,6 +164,24 @@ async function run() {
       const result = await userCollection.updateOne(query, updateDoc);
       res.send(result);
     });
+    // menu items update api 
+    app.patch('/updateItem/:id' , async (req , res)=>{
+      const menu = req.body;
+      const id = req.params.id;
+      const query = {_id: new ObjectId(id)}
+
+      const updateDoc = {
+        $set: {
+          name: menu.name,
+          price: menu.price,
+          image: menu.image,
+          recipe: menu.recipe,
+          category: menu.category,
+        }
+      }
+      const result = await menuCollection.updateOne(query , updateDoc)
+      res.send(result)
+    })
 
     // Connect the client to the server	(optional starting in v4.7)
     // await client.connect();

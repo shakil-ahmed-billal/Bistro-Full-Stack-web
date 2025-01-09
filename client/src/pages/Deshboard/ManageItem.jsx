@@ -1,7 +1,8 @@
 import { Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow } from "flowbite-react"
 import useMenu from "../../hooks/useMenu"
-import { Delete, Edit, User } from "lucide-react";
+import { Delete, Edit } from "lucide-react";
 import SectionTitle from "../../components/Shared/SectionTitle";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,7 +34,7 @@ const ManageItem = () => {
                         <TableCell>{item?.name}</TableCell>
                         <TableCell>$ {item?.price}</TableCell>
                         <TableCell className="flex gap-2 content-end justify-end">
-                            <button><Edit></Edit></button>
+                            <Link to={`/dashboard/updateItem/${item._id}`}><Edit></Edit></Link>
                             <button ><Delete className="text-red-600"></Delete></button>
                         </TableCell>
                     </TableRow>)}

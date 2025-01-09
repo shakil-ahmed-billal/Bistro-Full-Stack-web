@@ -11,6 +11,8 @@ import Order from '../pages/Order/Order'
 import Register from '../pages/Regsiter/Register'
 import PrivateRoute from '../private/PrivateRoute'
 import ManageItem from '../pages/Deshboard/ManageItem'
+import UpdateItem from '../pages/Deshboard/UpdateItem'
+import Payment from '../pages/Deshboard/Payment/Payment'
 
 
 
@@ -63,10 +65,18 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/addItem',
                 element: <AddItem></AddItem>
-            }, 
+            },
+            {
+                path: '/dashboard/updateItem/:id',
+                element: <UpdateItem></UpdateItem>
+            },
             {
                 path: '/dashboard/manageItem',
                 element: <ManageItem></ManageItem>
+            },
+            {
+                path: '/dashboard/payment',
+                element: <Payment></Payment>
             }
 
         ]
