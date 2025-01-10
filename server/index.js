@@ -1,10 +1,13 @@
-import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb'
-import express from 'express'
-import dotenv from 'dotenv'
-dotenv.config()
-import jwt from 'jsonwebtoken'
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config();
+const jwt = require('jsonwebtoken');
+const cors = require('cors');
+const Stripe = require('stripe')(process.env.PAYMENT_SECRET_KEY);
+
 const app = express();
-import cors from 'cors'
+
 const port = process.env.PORT || 5000;
 
 app.use(cors());
@@ -181,6 +184,26 @@ async function run() {
       }
       const result = await menuCollection.updateOne(query , updateDoc)
       res.send(result)
+    })
+
+
+
+    // payment intent
+    app.post('/create-payment' , async(req , res)=>{
+      const {price} = req.body;
+      const amount = parseInt(price * 100);
+
+
+
+      const paymentIntent = await Stripe.paymentIntents.create({
+        amount: amount ,
+        currency: "usd",
+        payment_method_types: ['card']
+      })
+ 
+      res.send({
+        clientSecret: paymentIntent.client_secret,
+      })
     })
 
     // Connect the client to the server	(optional starting in v4.7)
