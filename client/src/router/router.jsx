@@ -13,6 +13,7 @@ import PrivateRoute from '../private/PrivateRoute'
 import ManageItem from '../pages/Deshboard/ManageItem'
 import UpdateItem from '../pages/Deshboard/UpdateItem'
 import Payment from '../pages/Deshboard/Payment/Payment'
+import PaymentHistory from '../pages/Deshboard/Payment/PaymentHistory'
 
 
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment',
                 element: <Payment></Payment>
+            },
+            {
+                path: '/dashboard/paymentHistory',
+                element: <PaymentHistory></PaymentHistory>
             }
 
         ]

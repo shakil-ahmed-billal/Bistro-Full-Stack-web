@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useCart from '../../../hooks/useCart';
-
+import Swal from 'sweetalert2';
 
 const CheckoutForm = () => {
 
@@ -11,7 +11,7 @@ const CheckoutForm = () => {
     const elements = useElements();
     const axiosSecure = useAxiosSecure()
     const [clientSecret, setClientSecret] = useState('')
-    const [cart] = useCart()
+    const [cart , refetch] = useCart()
     const [error, setError] = useState('')
     const [transactionId , setTransactionId] = useState('')
 
@@ -84,12 +84,22 @@ const CheckoutForm = () => {
             const payment = {
                 email: user?.email,
                 price: totalPrice,
+                transactionId: paymentIntent.id,
                 date: new Date(), //utc time zone
                 cardId: cart.map(item => item._id),
                 menuItemId: cart.map(item => item.menuId),
                 status: 'pending'
             }
-            
+            const {data} = await axiosSecure.post('/payment' , payment)
+            if(data?.deleteResult?.deletedCount > 0){
+                refetch()
+                console.log('payment save',data)
+                Swal.fire({
+                    title: "Payment Successful!",
+                    text: "You clicked the button!",
+                    icon: "success"
+                  });
+            }
         }
     };
 

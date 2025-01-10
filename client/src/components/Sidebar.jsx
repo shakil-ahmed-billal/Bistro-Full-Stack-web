@@ -18,8 +18,6 @@ const Sidebar = () => {
 
     // TODO : get Admin value form the database
     const [isAdmin , isPending] = useAdmin()
-    // console.log(isAdmin)
-    const Admin = true
 
     console.log(isAdmin)
 
@@ -88,7 +86,7 @@ const Sidebar = () => {
 
                 {/* Admin or user navLink section */}
                 <div className="mt-3 flex flex-col gap-[5px]">
-                    {Admin ? <>
+                    {isAdmin ? <>
                         <NavLink to={'/dashboard/adminHome'}
                             className={`${isCollapse ? "justify-between" : "justify-center"} flex items-center w-full hover:bg-gray-50 p-[5px] rounded-md cursor-pointer transition-all duration-200 relative group`}>
                             <div className="flex items-center gap-[8px]">

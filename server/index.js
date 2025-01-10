@@ -51,6 +51,7 @@ async function run() {
     const menuCollection = db.collection("menu");
     const cartCollection = db.collection("cart");
     const reviewsCollection = db.collection("reviews");
+    const paymentCollection = db.collection("payments");
 
     // use verify admin after verifyToken
     const verifyAdmin = async (req, res, next) => {
@@ -114,7 +115,32 @@ async function run() {
       }
       res.send({ admin });
     });
+    // payment history api
+    app.get('/paymentHistory/:email' , async(req , res)=>{
+      const query = {email: req.params.email}
+      const result = await paymentCollection.find(query).toArray()
+      res.send(result)
+    })
 
+
+
+
+    // payment history save database
+    app.post('/payment' , async(req , res)=>{
+      const payment  = req.body;
+      const result = await paymentCollection.insertOne(payment);
+
+      // carefully delete each form the card
+
+      const query = {_id: {
+        $in: payment.cardId.map(id => new ObjectId(id))
+      }}
+
+      const deleteResult = await cartCollection.deleteMany(query)
+  
+      res.send({result , deleteResult})
+
+    })
     // foods  cart api
     app.post("/cart", async (req, res) => {
       const cartItem = req.body;
